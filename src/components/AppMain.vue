@@ -1,15 +1,33 @@
 <script>
 import AppHeader from './AppHeader.vue'
-import AppCard from './AppCard.vue'
+// import AppCard from './AppCard.vue'
 import AppFooter from './AppFooter.vue'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/pagination';
+
+
+
+// import required modules
+import { Pagination } from 'swiper';
 
 export default{
     name : "AppMain",
     components: {
     AppHeader,
     AppFooter,
-    AppCard
-  },
+    Swiper,
+      SwiperSlide,
+    // AppCard
+  }, setup() {
+      return {
+        modules: [Pagination],
+      };
+    },
+  
     data(){
         return{
             cards:[
@@ -54,14 +72,54 @@ export default{
                 <h1>TOKYO</h1>
                 <h2>...not so far away</h2>
             </div>
-            <div class="carousel__list">
-                <AppCard v-for="card in cards" :key="card"
-                    :img="card.image"
-                    :title="card.title"
-                    :data="card.data"/>
-            </div>
+            <swiper
+              :slidesPerView="3"
+              :spaceBetween="30"
+              :pagination="{
+                clickable: true,
+              }"
+              :modules="modules"
+              class="mySwiper"
+            >
+              <swiper-slide>
+                <div class="card">
+                  <img src="src/img/tokyo-tower.jpg" alt="tokyo">
+                  <h2>Tokyo Tower</h2>
+                  <h3>Japan</h3>
+                </div>
+              </swiper-slide>
+              <swiper-slide>
+                <div class="card">
+                  <img src="src/img/tokyo-kimono.jpg" alt="tokyo">
+                  <h2>Kimono</h2>
+                  <h3>Japan</h3>
+                </div>
+              </swiper-slide>
+              <swiper-slide>
+                <div class="card">
+                  <img src="src/img/tokyo-street-food.jpg" alt="tokyo">
+                  <h2>Street Food</h2>
+                  <h3>Japan</h3>
+                </div>
+              </swiper-slide>
+              <swiper-slide>
+                <div class="card">
+                  <img src="src/img/tokyo5.jpg" alt="tokyo">
+                  <h2>Tokyo Night</h2>
+                  <h3>Japan</h3>
+                </div>
+              </swiper-slide>
+              <swiper-slide>
+                <div class="card">
+                  <img src="src/img/tokyo4.jpg" alt="tokyo">
+                  <h2>Tample</h2>
+                  <h3>Japan</h3>
+                </div>
+              </swiper-slide>
+            </swiper>
         </div>
         <AppFooter />
+   
     </div>
 </template>
 
@@ -99,13 +157,29 @@ export default{
         }
     }
 }
-.carousel__list{
-    display: flex;
-    position: relative;
+
+.card{
+  width: 250px;
+  height: 400px;
+  border-radius: 20px;
+  position: relative;
+  img{
     width: 100%;
-    height: 300px;
-    justify-content: center;
-    perspective: 300px;
-  
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  h2{
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 100;
+  }
+  h3{
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+    z-index: 100;
+  }
 }
 </style>

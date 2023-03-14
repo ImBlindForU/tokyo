@@ -10,7 +10,7 @@ export default{
     <div class="container-fluid">
         <div class="row-header">
             <div class="logo">
-                <h2>Tokyo</h2>
+                <i class="fa-solid fa-bolt"></i>
             </div>
             <div class="header-links">
                 <ul>
@@ -31,7 +31,9 @@ export default{
                     <li>
                         <a href="">Contact</a>
                     </li>
-                    <li class="search"><i class="fa-solid fa-magnifying-glass"></i></li>
+                    <li class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
                 </ul>   
                 
 
@@ -51,6 +53,12 @@ export default{
     border-radius: 20px;
     text-align: center;
     background-color: white;
+    &:hover{
+        background-color: purple;
+        color: purple;
+        transition: all 0.4s ease-in;
+
+    }
 }
 .row-header{
     padding-top: 3rem;
@@ -59,17 +67,50 @@ export default{
     justify-content: space-between;
     align-items: center;
     opacity: 0.9;
+    .logo{
+       
+        i{
+            color: white;
+            font-size: 2rem;
+
+            &:hover{
+                transition: all 0.4s ease-in;
+                color: purple;
+            }
+        }
+    }
     .header-links{
         ul{
             display: flex;
             justify-content:space-between;
             align-items: center;
             list-style: none;
+            
             li{
-            margin-right: 1rem;
+            
+            margin-right: 2rem;
+
+            &:hover{
+                color: black;
                 a{
+                    transition: all 0.4s ease-in-out;
+                    color: purple;
+                    // border-top: 1px solid purple;
+                    // border-bottom: 1px solid purple;
+                    border: 1px solid purple;
+                    padding: .8rem;  
+                    
+
+                }
+            }
+                a{
+                    border-bottom: 1px solid transparent;
+
                     color: white;
+                    padding: 1rem;  
                     text-decoration: none;
+
+                  
                 }
             }
         }
